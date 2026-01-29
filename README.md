@@ -1,5 +1,46 @@
-This is a simple project which demonstrates how kubernetees work . For the local working purpose I have used minikube which performs same purpose as a kubernetees . 
-Here I have create three independent pods : 
-1- login-clinet : This acts as frontend UI . It has 3 replicas which helps in load balancing when there are too many requests . The request first comes to nginx proxy which is further forwarded inside the pods .
-2- login-k8 : This acts as backend server . Even this has 3 replicas to help as load balancer . I have used nginx ingress controller to send the request from outside world to the server running inside pod . 
-3- mongo : This is used for database . Here only 1 instance is used to avoid ambiguity . All the servers are connected to this database 
+Kubernetes Login Application (Minikube Demo)
+
+This project is a simple demonstration of how Kubernetes works using Minikube for local development. Minikube provides a local Kubernetes cluster that closely mimics a real Kubernetes environment, making it ideal for learning and testing purposes.
+
+The application is deployed using three independent Kubernetes pods, each serving a specific role in the system architecture.
+
+🏗️ Architecture Overview
+
+The project follows a microservices-based architecture with clear separation between frontend, backend, and database components.
+
+📦 Pods and Their Responsibilities
+1️⃣ login-client (Frontend)
+
+A1. login-client (Frontend)
+-Acts as the frontend user interface
+-Runs with 3 replicas for load balancing
+-Handles multiple user requests efficiently
+-Requests first reach an NGINX reverse proxy
+-Proxy forwards traffic to the frontend pods
+
+Purpose:
+-Serve UI to users
+-Distribute incoming traffic evenly across frontend replicas
+
+2️⃣ login-k8 (Backend Server)
+-Acts as the backend API/server
+-Deployed with 3 replicas for scalability and high availability
+-Uses an NGINX Ingress Controller to expose backend services to the outside world
+-Ingress routes external requests to the correct backend pod
+
+Purpose:
+-Process client requests
+-Handle business logic
+-Communicate with the database
+
+3️⃣ mongo (Database)
+-Acts as the MongoDB database
+-Runs as a single instance to avoid data inconsistency and ambiguity
+-All backend replicas connect to this database pod
+
+Purpose:
+-Store and manage application data
+-Provide a centralized data source for all backend services
+
+## Architecture Diagram
+![Kubernetes Architecture](kubernetees.jpg)

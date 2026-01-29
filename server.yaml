@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-k8
+  labels:
+    app: login-k8     # ✅ FIXED
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: login-k8
+  template:
+    metadata:
+      labels:
+        app: login-k8
+    spec:
+      containers:
+        - name: server
+          image: navan2005/login-server:1
+          ports:
+            - containerPort: 3000

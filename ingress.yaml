@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: login-ingress
 spec:
-  ingressClassName: nginx   # 🔥 THIS LINE IS CRITICAL
+  ingressClassName: nginx 
   rules:
     - host: login.local
       http:

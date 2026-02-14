@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: login-k8
   labels:
-    app: login-k8     # ✅ FIXED
+    app: login-k8   
 spec:
   replicas: 3
   selector:
